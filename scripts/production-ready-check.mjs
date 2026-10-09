@@ -46,6 +46,7 @@ const home = read('src/pages/Home.tsx')
 const navigation = read('src/components/FantasyNavigation.tsx')
 const destinations = read('src/lib/publicNavigation.ts')
 const homeCss = read('src/pages/WorldOfXethkiozLanding.css')
+const homeCinematicCss = read('src/pages/HomePortalCinematic.css')
 const indexHtml = read('index.html')
 const webManifest = read('public/manifest.webmanifest')
 const publicNews = read('src/pages/News.tsx')
@@ -84,7 +85,7 @@ check(
     && lockfile.version === pkg.version
     && lockfile.packages?.['']?.version === pkg.version,
 )
-check('shared public footer exposes the centralized release version', footer.includes("import { SITE_VERSION, SOCIAL_LINKS }") && footer.includes('XETHKIOZ Web {SITE_VERSION}'))
+check('shared public footer exposes the centralized release version', footer.includes("import { SITE_VERSION, SOCIAL_LINKS }") && footer.includes('{SITE_VERSION}'))
 check(
   'installable web manifest is linked and versioned',
   indexHtml.includes('rel="manifest" href="/manifest.webmanifest"')
@@ -121,17 +122,13 @@ check(
     && !mainEntry.includes("import NexusChatWidget from './components/nexus/NexusChatWidget'")
     && !mainEntry.includes('mountNexusChat'),
 )
-check(
-  'Home static art avoids motion and video data costs',
-  !home.includes('<video') && !home.includes('autoPlay')
-    && home.includes('/assets/portal-games-world-v3.webp')
-    && homeCss.includes('prefers-reduced-motion: reduce'),
-)
+check('Home scenery avoids automatic video and bounds optional motion', !home.includes('<video') && !home.includes('autoPlay') && read('src/components/portals/PortalEffects.tsx').includes('Math.min(count, 12)') && read('src/pages/HomePortals.css').includes('prefers-reduced-motion'))
 check(
   'Home exposes official XETHKIOZ web and social signals',
-  home.includes("import { SITE_VERSION, SOCIAL_LINKS } from '../lib/siteConfig'")
-    && home.includes('https://www.xethkioz.com.ar')
-    && home.includes("['Threads', 'Instagram', 'TikTok Principal', 'YouTube']"),
+  footer.includes("['Threads', 'Instagram', 'TikTok Principal', 'YouTube', 'Web']")
+    && footer.includes('https://www.xethkioz.com.ar')
+    && appShell.includes('!isCmsRoute && (')
+    && appShell.includes('<Footer />'),
 )
 check(
   'Home uses the canonical Veyr Wisp without duplicate Home implementation',
@@ -140,37 +137,10 @@ check(
     && globalWisp.includes("homeEntry ? ' is-home-entry'")
     && !home.includes('className="xk-rb-wisp"'),
 )
-check(
-  'Home uses an existing public promotional illustration',
-  exists('public/assets/portal-games-world-v3.webp')
-    && home.includes('/assets/portal-games-world-v3.webp'),
-)
-check(
-  'Home exposes accessible World navigation with reduced-motion support',
-  home.includes('<main className="wox-home"')
-    && (home.includes('<FantasyNavigation />') && navigation.includes('className="xkf-desktop"'))
-    && navigation.includes('className="xkf-mobile"')
-    && navigation.includes('aria-label={lang === \'es\' ? \'Ecosistema XETHKIOZ\' : \'XETHKIOZ ecosystem\'}')
-    && !home.includes('<video')
-    && homeCss.includes('prefers-reduced-motion: reduce'),
-)
-check(
-  'Home preserves the compact XETHKIOZ ecosystem while World stays primary',
-  destinations.includes("href: '/gaming'")
-    && destinations.includes('https://argenciencia.com/')
-    && destinations.includes("href: '/mascotas/'")
-    && !destinations.includes("href: '/nexus-city'")
-    && destinations.includes("href: '/creacion-web'")
-    && home.includes('className="wox-hero"'),
-)
-check(
-  'Home keeps ecosystem services secondary to World of Xethkioz',
-  (home.includes('<FantasyNavigation />') && navigation.includes('className="xkf-desktop"'))
-    && navigation.includes('className="xkf-mobile"')
-    && home.includes('className="wox-content"')
-    && destinations.includes("href: '/creacion-web'")
-    && globalWisp.includes("localizePath('/green-node')"),
-)
+check('Home uses approved public portal scenery without production geometry', ['fire','nature','ice'].every(tone => exists(`public/assets/portals/${tone}-portal.webp`)) && !/\.(glb|gltf|fbx|blend)/.test(home))
+check('Home exposes accessible portal navigation with pause and reduced motion support', home.includes('<PortalNavigation home/>') && read('src/components/portals/PortalNavigation.tsx').includes('aria-expanded={open}') && read('src/components/portals/PortalNavigation.tsx').includes('aria-pressed={effects.enabled}') && read('src/components/portals/PortalSystem.css').includes('prefers-reduced-motion'))
+check('Home preserves three direct destinations plus the Green Node rift', home.includes('portal-triad') && home.includes('portal-node-rift') && home.includes("href: '/mascotas/'") && home.includes("localizePath('/digital')") && home.includes("localizePath('/world-of-xethkioz/elemental-realms')"))
+check('Home keeps service catalog and local AI details in Digital instead of expanding Home', !home.includes('xk-veyr-story') && !home.includes('xk-studio-story') && read('src/pages/DigitalHub.tsx').includes('VEYR') && read('src/pages/DigitalHub.tsx').includes('https://argenciencia.com/'))
 check(
   'Retired Nexus City editorial material stays out of public feeds and article metadata',
   publicNewsService.includes("RETIRED_PUBLIC_ARTICLE_SLUGS")

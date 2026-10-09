@@ -1,3 +1,32 @@
+# Pass 40: one direct game destination; legacy universe URLs remain compatible.
+[[redirects]]
+from = "/world-of-xethkioz"
+to = "/world-of-xethkioz/elemental-realms"
+status = 301
+force = true
+[[redirects]]
+from = "/en/world-of-xethkioz"
+to = "/en/world-of-xethkioz/elemental-realms"
+status = 301
+force = true
+[[redirects]]
+from = "/digital"
+to = "/seo-shells/digital.html"
+status = 200
+[[redirects]]
+from = "/en/digital"
+to = "/seo-shells/en-digital.html"
+status = 200
+
+[[redirects]]
+from = "/digital/cursos"
+to = "/seo-shells/digital-cursos.html"
+status = 200
+[[redirects]]
+from = "/en/digital/cursos"
+to = "/seo-shells/en-digital-cursos.html"
+status = 200
+
 [build]
   command = "npm run build"
   publish = "dist"
@@ -17,13 +46,58 @@
   command = "npm run build"
 
 [[redirects]]
+  from = "/tripo"
+  to = "https://studio.tripo3d.ai/?utm_source=creator_invite&utm_medium=linkcopy&utm_campaign=VXH2GZ&utm_content=2251799814429939"
+  status = 302
+
+[[redirects]]
+  from = "/starlink"
+  to = "https://starlink.com?referral=RC-DF-13005453-64032-82"
+  status = 302
+
+[[redirects]]
   from = "/fun"
-  to = "/nexus-city"
+  to = "/community"
   status = 301
 
 [[redirects]]
   from = "/en/fun"
-  to = "/en/nexus-city"
+  to = "/en/community"
+  status = 301
+
+[[redirects]]
+  from = "/nexus-city"
+  to = "/community"
+  status = 301
+
+[[redirects]]
+  from = "/nexus-city/*"
+  to = "/community"
+  status = 301
+
+[[redirects]]
+  from = "/en/nexus-city"
+  to = "/en/community"
+  status = 301
+
+[[redirects]]
+  from = "/en/nexus-city/*"
+  to = "/en/community"
+  status = 301
+
+[[redirects]]
+  from = "/web-creation"
+  to = "/creacion-web"
+  status = 301
+
+[[redirects]]
+  from = "/register"
+  to = "/account"
+  status = 301
+
+[[redirects]]
+  from = "/admin"
+  to = "/cms"
   status = 301
 
 [[redirects]]
@@ -34,11 +108,12 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; media-src 'self' https: blob:; connect-src 'self' https://pascicauudfyydzknoop.supabase.co wss://pascicauudfyydzknoop.supabase.co; manifest-src 'self'; worker-src 'self' blob:"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.clarity.ms https://connect.facebook.net https://www.paypal.com https://www.paypalobjects.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://*.supabase.co wss://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com https://www.facebook.com https://www.paypal.com https://*.paypal.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.paypal.com https://*.paypal.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self'; upgrade-insecure-requests"
 
 [[headers]]
   for = "/assets/*"
@@ -49,3 +124,21 @@
   for = "/videos/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/cms*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/account"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"
+
+[[headers]]
+  for = "/profile"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+    Cache-Control = "no-store"

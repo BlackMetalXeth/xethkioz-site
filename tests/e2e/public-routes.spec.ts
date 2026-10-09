@@ -80,12 +80,12 @@ test.describe('rutas públicas', () => {
     })
   }
 
-  test('Huellas de Puan carga como portal estático dedicado', async ({ page }) => {
+  test('Huellas Argentina carga como portal estático dedicado', async ({ page }) => {
     const response = await page.goto('/mascotas/', { waitUntil: 'domcontentloaded' })
     expect(response?.status()).toBeLessThan(400)
     await expect(page.getByRole('heading', { level: 1, name: /Huellas/i })).toBeVisible()
     await expect(page.getByRole('navigation', { name: 'Navegación' })).toBeVisible()
-    await expect(page.getByRole('link', { name: 'Volver a XETHKIOZ' })).toHaveAttribute('href', '/')
+    await expect(page.getByRole('link', { name: /Volver a los portales/ })).toHaveAttribute('href', '/')
   })
 })
 
@@ -177,6 +177,7 @@ test.describe('telemetría con consentimiento', () => {
   })
 
   test('reintenta un fallo transitorio con el mismo eventId cuando la telemetría está habilitada', async ({ page }) => {
+    test.skip(process.env.VITE_VISIT_TELEMETRY_ENABLED !== 'true', 'La telemetría de visitas está deshabilitada en este build de prueba.')
     const payloads: Array<{ eventId?: string; route?: string }> = []
 
     await page.addInitScript(() => {

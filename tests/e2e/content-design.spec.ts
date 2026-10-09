@@ -1,38 +1,19 @@
 import { expect, test } from '@playwright/test'
 
 test.describe('orden y navegación de secciones', () => {
-  test('Inicio presenta los tres proyectos como portales y conserva el ecosistema', async ({ page }) => {
+  test('Inicio presenta el launcher inmersivo con Aion 2, WoWForever y portales secundarios', async ({ page }) => {
     await page.goto('/')
-
-    await expect(page.getByRole('heading', { level: 1, name: /XETHKIOZ.*Historias para jugar/ })).toBeAttached()
-    const portals = page.getByRole('navigation', { name: 'Red de portales: elegí un proyecto' })
-    await expect(portals.getByRole('link')).toHaveCount(3)
-    await expect(portals.getByRole('link', { name: /World of Xethkioz/ })).toHaveAttribute('href', '/world-of-xethkioz')
-    await expect(portals.getByRole('link', { name: /VEYR/ })).toHaveAttribute('href', '#veyr')
-    await expect(portals.getByRole('link', { name: /XETHKIOZ Studio/ })).toHaveAttribute('href', '/creacion-web#landing-esencial')
-
-    const mobileEcosystem = page.locator('.xkf-mobile')
-    if (await mobileEcosystem.isVisible()) {
-      await mobileEcosystem.click()
-    }
-
-    const ecosystem = page.locator(
-      'nav[aria-label="Ecosistema XETHKIOZ"]:visible, nav[aria-label="Ecosistema XETHKIOZ móvil"]:visible',
-    )
-    await expect(ecosystem).toBeVisible()
-    await expect(ecosystem.getByRole('link')).toHaveCount(8)
-    await expect(ecosystem.getByRole('link', { name: 'World of Xethkioz', exact: true })).toHaveAttribute('href', '/world-of-xethkioz')
-    await expect(ecosystem.getByRole('link', { name: 'Biblioteca gamer', exact: true })).toHaveAttribute('href', '/gaming')
-    await expect(ecosystem.getByRole('link', { name: /ArgenCiencia/ })).toHaveAttribute('href', 'https://argenciencia.com/')
-    await expect(ecosystem.getByRole('link', { name: 'Mascotas', exact: true })).toHaveAttribute('href', '/mascotas/')
-    await expect(ecosystem.getByRole('link', { name: 'Nexus City', exact: true })).toHaveCount(0)
-    await expect(ecosystem.getByRole('link', { name: 'Creación web', exact: true })).toHaveAttribute('href', '/creacion-web')
-    await expect(ecosystem.getByRole('link', { name: 'VEYR IA', exact: true })).toHaveAttribute('href', '/#veyr')
-    await expect(page.locator('.xkf-header a[href="/news"]').first()).toHaveAttribute('href', '/news')
-
-    await expect(page.locator('.wox-hero')).toBeVisible()
-    await expect(page.getByText('UNITY 6 · URP · 3D/2.5D', { exact: true })).toBeVisible()
-    await expect(page.locator('#origin, #worlds, #characters, #media-3d')).toHaveCount(0)
+    await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('World of Xethkioz')
+    await expect(page.getByRole('tab', { name: /AION 2/i })).toHaveAttribute('aria-selected', 'true')
+    await expect(page.locator('.xk-launcher-hero')).toContainText('Guía de Bardo')
+    await expect(page.locator('.xk-launcher-hero')).toContainText('Guía de Brujo')
+    await expect(page.locator('.xk-launcher-secondary a')).toHaveCount(2)
+    await expect(page.locator('.xk-launcher-green')).toHaveAttribute('href', '/green-node')
+    await expect(page.locator('.portal-footer')).toBeVisible()
+    await page.getByRole('tab', { name: /WOWFOREVER/i }).click()
+    await expect(page.getByRole('tab', { name: /WOWFOREVER/i })).toHaveAttribute('aria-selected', 'true')
+    await expect(page.locator('.xk-launcher-hero')).toHaveClass(/is-wow/)
+    await expect(page.locator('#origin, #worlds, #media-3d, .xk-studio-story, .xk-veyr-story')).toHaveCount(0)
   })
 
   test('Gaming conserva una sola navegación de cuatro rutas y el idioma queda en el header global', async ({ page }) => {
@@ -54,7 +35,7 @@ test.describe('orden y navegación de secciones', () => {
       await expect(topNav).toBeVisible()
       const labels = await topNav.locator('a').allTextContents()
       expect(labels.map(label => label.trim().replace(/\s+/g, ' '))).toEqual([
-        'HOME', 'THE GAME', 'Gaming', 'Pets', 'Science & Tech ↗', 'Web creation',
+        'HOME', 'THE GAME', 'Gaming', 'Huellas Argentina', 'Science & Tech ↗', 'Web creation',
       ])
     } else {
       await expect(topNav).toBeHidden()
@@ -63,7 +44,7 @@ test.describe('orden y navegación de secciones', () => {
 
     const veyr = page.locator('.xk-wisp.is-gaming-veyr')
     await expect(veyr).toBeVisible()
-    await expect(veyr.locator('.xk-wisp-specter-veyr')).toHaveAttribute('src', /veyr-good\.webp$/)
+    await expect(veyr.locator('.xk-wisp-specter-veyr')).toHaveAttribute('src', /veyr-companion\.webp$/)
 
     await navigation.getByRole('button', { name: /Radar$/ }).click()
     await expect(page).toHaveURL(/\/en\/gaming\?section=news$/)

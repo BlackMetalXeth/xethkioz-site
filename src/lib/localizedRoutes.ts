@@ -5,9 +5,12 @@ export const ENGLISH_PREFIX = '/en'
 export const LOCALIZED_PUBLIC_PATHS = new Set([
   '/',
   '/world-of-xethkioz',
+  '/world-of-xethkioz/elemental-realms',
   '/gaming',
   '/gaming/guides',
   '/science',
+  '/digital',
+  '/digital/cursos',
   '/creacion-web',
   '/green-node',
   '/community',

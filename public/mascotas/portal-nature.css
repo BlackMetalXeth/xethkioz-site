@@ -1,0 +1,314 @@
+/* Same nature threshold as World of Xethkioz; all existing community functions remain. */
+body.portal-nature{--green:#84c997;--green2:#a7eab4;--orange:#e5b47a;--paper:#101f19;--ink:#eef5e9;--muted:#b4c7b9;--line:#345441;--cream:#0b1711;background:radial-gradient(ellipse at 82% 5%,rgba(64,116,43,.22),transparent 44%),#07120e;color:var(--ink)}
+.portal-nature .top{background:#091711;border-bottom:1px solid #385237;box-shadow:0 3px 22px #0005}.portal-nature .brand-mark{background:#122d1b;border-color:#63865c}.portal-nature .brand-text small{color:#b5d0b1}.portal-nature .nav button{color:#cae4cd}.portal-nature .nav button.active,.portal-nature .nav button:hover{background:#264c31;color:#f4ffe9}.portal-nature .back{color:#c4e8c4;border-color:#577c54}
+.portal-nature .hero{min-height:435px;border-bottom:1px solid #3d643a;background:#09170e}.portal-nature .hero-photo{opacity:.25;mix-blend-mode:luminosity}.portal-nature .hero::before{content:'';position:absolute;inset:0;background:url('/assets/portals/nature-portal.webp') 95% 45%/auto 125% no-repeat;opacity:.95}.portal-nature .hero::after{background:linear-gradient(90deg,#09170e 3%,rgba(9,23,14,.88) 38%,rgba(9,23,14,.15) 90%),linear-gradient(0deg,#09170e,transparent 28%)}.portal-nature .hero-content{padding-top:55px;padding-bottom:90px}.portal-nature .hero h1{font-family:Georgia,serif;font-weight:500}.portal-nature .hero h1 span{color:#b4eb8a}.portal-nature .eyebrow{color:#d7efc5;background:#15331ec9;border-color:#739b59}.portal-nature .hero p{color:#e6f1e5}
+.portal-nature :is(.hero-cta,.btn.primary,.publish-top){background:#355d31!important;color:#f1ffe9!important;border:1px solid #9cce78}.portal-nature .actions{gap:13px}.portal-nature .action{background:linear-gradient(155deg,#1c3220,#0d1f17);color:#eef5e9;border-color:#4a693c;box-shadow:0 9px 30px #0003}.portal-nature .action strong,.portal-nature .action h3{color:#d6f3b8}.portal-nature .action p{color:#c6d9c8}
+.portal-nature :is(.card,.info,.form,.directory-card,.donation-card,.news-card,.resource-card,.stats,.empty){background:var(--paper);color:var(--ink);border-color:var(--line)}.portal-nature :is(.section-heading,.info-title,.card-body h3){color:#eaf7de}.portal-nature :is(input,select,textarea){background:#08150f!important;color:#e4f3e4!important;border-color:#43634b!important}.portal-nature :is(input,textarea)::placeholder{color:#94ad99}.portal-nature option{background:#0b1c12;color:#e6f3de}
+.portal-nature :is(.filters,.toolbar,.notice,.callout,.help-panel,.detail-panel){background:#14251b;color:#d4e7d2;border-color:#416440}.portal-nature :is(.tag,.badge,.pill){background:#1b3522;color:#d4f0c2;border-color:#486d43}.portal-nature .section-header p,.portal-nature .lead{color:#b9cfb7}.portal-nature .muted{color:#a9c1ad}.portal-nature .btn{background:#183622;border-color:#6f9765;color:#e4f5d8}.portal-nature .btn:hover{background:#284a2d}.portal-nature footer{background:#07120e;color:#c5d6c0;border-color:#385435}.portal-nature footer a{color:#deefce}.portal-nature footer p{color:#a9c4ad}.portal-nature :is(a,button,input,select,textarea):focus-visible{outline:2px solid #cbf393;outline-offset:3px}
+@media(max-width:760px){.portal-nature .hero{min-height:440px}.portal-nature .hero::before{background-position:center top;background-size:auto 100%;opacity:.55}.portal-nature .hero::after{background:linear-gradient(0deg,#09170e 0%,rgba(9,23,14,.75) 40%,rgba(9,23,14,.28))}.portal-nature .hero-content{padding-top:50px}.portal-nature .nav{scrollbar-color:#588657 #0a170e}}
+@media(prefers-reduced-motion:reduce){.portal-nature *{animation:none!important;scroll-behavior:auto!important}}
+/* Dark surfaces and sufficient contrast on every existing community panel. */
+.portal-nature .back{background:#142b1a;color:#d2ebbd;border-color:#759963}
+.portal-nature .action-card{background:linear-gradient(145deg,#1c3323,#102019);border-color:#517148;color:#e3efd9;box-shadow:0 12px 36px #0004}.portal-nature .action-card .icon{background:#284535}.portal-nature .action-card small{color:#c4d4c3}.portal-nature .action-card strong{color:#d9edc4}.portal-nature .action-lost strong{color:#ffc0ad}.portal-nature .action-adopt strong{color:#ddb6f0}.portal-nature .action-help strong{color:#b3e1f1}
+.portal-nature :is(.national-strip,.help-banner,.donation-note,.guide-limit){background:#13261b;color:#d0e5ca;border-color:#3c6144}.portal-nature .national-strip h2{color:#e4f4d5}.portal-nature .national-strip p{color:#bdd3b8}.portal-nature .province-chip{background:#15311f;color:#e2f0d4;border-color:#648258}.portal-nature .province-chip:hover{background:#274a2e}
+.portal-nature :is(.control,.share,.directory-link){background:#112b1c;color:#e2f3d7;border-color:#5c8050}.portal-nature :is(.contact,.submit,.donate-btn:not(.paypal):not(.mp)){background:#355d3d;color:#f1ffe6;border:1px solid #7da36a}.portal-nature .gallery{background:#183021}
+.portal-nature .warn{background:#3d3118;color:#f7dfaa}.portal-nature .danger{background:#43221e;color:#ffd0bc}.portal-nature .expiry strong{color:#edc197}.portal-nature .pill.blue{background:#153444;color:#c0e5f3}.portal-nature .Perdido{background:#452a23;color:#ffc1aa}.portal-nature .Encontrado{background:#214329;color:#d2eeb1}.portal-nature .Adopción{background:#32263f;color:#edc5ff}
+.portal-nature .top{backdrop-filter:none}
+.portal-nature .hero-cta{box-shadow:0 9px 27px rgba(93,160,74,.2)}
+.pet-portal-effects{display:inline-flex;align-items:center;min-height:44px;padding:8px 13px;margin:0 0 8px 8px;border:1px solid #81a16b;background:#12281cd9;color:#dfefcf;border-radius:5px;font:600 12px/1.4 Inter,system-ui;cursor:pointer}
+.nature-fireflies{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;contain:strict}.nature-fireflies i{position:absolute;left:var(--x);bottom:30%;width:4px;height:4px;background:#d2ff8f;border-radius:50%;box-shadow:0 0 10px #b9ff63;opacity:0;animation:nature-firefly 7s var(--delay) linear infinite;animation-play-state:paused}.nature-fireflies[data-running='true'] i{animation-play-state:running}
+@keyframes nature-firefly{0%{transform:translate3d(0,0,0);opacity:0}25%{opacity:.7}75%{opacity:.3}100%{transform:translate3d(27px,-90px,0);opacity:0}}
+@media(max-width:760px){.nature-fireflies i:nth-child(n+4){display:none}.pet-portal-effects{margin-left:0;margin-top:7px}}
+@media(prefers-reduced-motion:reduce){.nature-fireflies{display:none}}
+
+/* Pass 41: stats.js mounts after this stylesheet; scoped selectors beat its legacy light theme. */
+.portal-nature .community-stats{background:linear-gradient(135deg,#142d20,#0e2018 64%,#14251a);color:#eef5e9;border-color:#416348;box-shadow:0 12px 36px #0003}
+.portal-nature .community-stats-head h2{color:#e3f5d5;line-height:1.16}
+.portal-nature :is(.community-stats-head p,.community-stats-note){color:#bdd3bf}
+.portal-nature .community-stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.portal-nature .community-stat{min-width:0;background:#12261c;border-color:#395c42}
+.portal-nature .community-stat>div{min-width:0;overflow-wrap:break-word}
+.portal-nature .community-stat strong{color:#e8f8da}
+.portal-nature .community-stat span:last-child{color:#bdd3bf}
+.portal-nature .community-stat-icon{background:#274631;box-shadow:inset 0 0 0 1px #50754955}
+.portal-nature .community-stats-live{max-width:100%;white-space:normal;background:#213e29;color:#d0edba;line-height:1.5}
+.portal-nature .community-stats-live::before{flex-shrink:0;background:#a8e579;box-shadow:0 0 0 4px #89c2601f}
+/* Transitions affect only the compositor-friendly transform, never all properties on a touch tap. */
+.portal-nature .action-card{transition:transform .2s ease}
+.portal-nature .action-card:hover{transform:none}
+@media(hover:hover) and (pointer:fine){.portal-nature .action-card:hover{transform:translateY(-4px)}}
+/* Keep decorative lights behind the hero copy, including its interactive controls. */
+.portal-nature .nature-fireflies{z-index:1}
+@media(max-width:800px){.portal-nature .community-stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.portal-nature *{transition:none!important}}
+
+
+/* Pass 43 — lighter living-nature treatment and stable desktop actions. */
+body.portal-nature{
+  background:
+    radial-gradient(circle at 50% 0,rgba(126,190,101,.16),transparent 34%),
+    linear-gradient(180deg,#06110c 0%,#0a1d12 44%,#07120e 100%);
+}
+.portal-nature .top .wrap{width:min(1760px,calc(100% - 24px))}
+.portal-nature .header-row{
+  grid-template-columns:max-content minmax(0,1fr) max-content max-content;
+  gap:10px;
+  min-height:64px;
+}
+.portal-nature .nav{min-width:0;justify-content:center}
+.portal-nature .nav button{padding:9px 10px;font-size:.78rem}
+.portal-nature .header-publish{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:40px;
+  padding:9px 14px;
+  border-radius:999px;
+  font-size:.78rem;
+  font-weight:900;
+  white-space:nowrap;
+}
+.portal-nature .back{white-space:nowrap}
+
+/* Forest at the edges, luminous clearing through the middle. */
+.portal-nature .hero{
+  min-height:455px;
+  border-top:1px solid #477b45;
+  border-bottom:1px solid #6c9b58;
+  background:#07150d;
+  box-shadow:inset 0 -55px 90px rgba(5,18,10,.45);
+}
+.portal-nature .hero-photo{
+  z-index:0;
+  opacity:.42;
+  mix-blend-mode:screen;
+  object-position:18% 52%;
+  filter:saturate(.95) brightness(1.16) contrast(1.03);
+  -webkit-mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.92) 30%,rgba(0,0,0,.42) 58%,transparent 82%);
+  mask-image:linear-gradient(90deg,#000 0%,rgba(0,0,0,.92) 30%,rgba(0,0,0,.42) 58%,transparent 82%);
+}
+.portal-nature .hero::before{
+  background-position:92% 47%;
+  background-size:auto 132%;
+  opacity:.94;
+  filter:saturate(1.12) brightness(1.06);
+}
+.portal-nature .hero::after{
+  background:
+    radial-gradient(circle at 70% 46%,rgba(247,255,235,.44) 0%,rgba(177,229,137,.17) 25%,transparent 48%),
+    linear-gradient(90deg,#07150d 0%,rgba(7,21,13,.91) 34%,rgba(12,42,24,.52) 57%,rgba(221,247,204,.10) 76%,rgba(7,21,13,.18) 100%),
+    linear-gradient(0deg,#07150d 0%,rgba(7,21,13,.16) 30%,transparent 56%);
+}
+.portal-nature .hero-content{padding-top:54px;padding-bottom:82px}
+.portal-nature .hero-copy{max-width:625px}
+.portal-nature .eyebrow{
+  background:rgba(23,62,34,.82);
+  border:1px solid #8bb675;
+  color:#f3ffe9;
+}
+.portal-nature .hero h1{text-shadow:0 5px 24px rgba(0,0,0,.42)}
+.portal-nature .hero h1 span{color:#baff83;text-shadow:0 0 24px rgba(156,235,102,.2)}
+.portal-nature .hero p{color:#f5faef;text-shadow:0 2px 16px rgba(0,0,0,.46)}
+
+/* Pale natural interiors with green frames: more air, less moss. */
+.portal-nature .action-card{
+  background:linear-gradient(155deg,rgba(250,253,246,.97),rgba(232,245,227,.94));
+  color:#173420;
+  border:1px solid #66985c;
+  box-shadow:0 16px 38px rgba(0,0,0,.23),inset 0 1px 0 rgba(255,255,255,.8);
+}
+.portal-nature .action-card .icon{
+  background:linear-gradient(145deg,#e8f5e2,#f9fcf5);
+  border:1px solid #9fc291;
+  box-shadow:0 7px 18px rgba(36,83,43,.10);
+}
+.portal-nature .action-card small{color:#5b725f}
+.portal-nature .action-card strong{color:#234d2d}
+.portal-nature .action-lost strong{color:#ad4435}
+.portal-nature .action-found strong{color:#3f713f}
+.portal-nature .action-adopt strong{color:#78508f}
+.portal-nature .action-help strong{color:#326d83}
+
+.portal-nature :is(.card,.info,.form,.directory-card,.donation-card,.guide){
+  background:linear-gradient(155deg,#f8fbf3,#edf6e9);
+  color:#173420;
+  border-color:#69945f;
+  box-shadow:0 14px 34px rgba(0,0,0,.18);
+}
+.portal-nature :is(.card,.info,.form,.directory-card,.donation-card,.guide) :is(h2,h3,strong){color:#173d24}
+.portal-nature :is(.directory-card p,.donation-card p,.guide p,.card-body p,.info p){color:#536b58}
+.portal-nature :is(.card-body h3,.section-heading,.info-title){color:#173d24}
+.portal-nature .meta{color:#3e7144}
+.portal-nature .share{
+  background:#f9fcf6;
+  color:#23442b;
+  border-color:#88aa7d;
+}
+.portal-nature :is(input,select,textarea){
+  background:#fbfdf8!important;
+  color:#183620!important;
+  border-color:#84a77a!important;
+}
+.portal-nature :is(input,textarea)::placeholder{color:#728277}
+.portal-nature option{background:#fbfdf8;color:#183620}
+
+.portal-nature .national-strip{
+  background:
+    radial-gradient(circle at 78% 15%,rgba(193,235,161,.40),transparent 34%),
+    linear-gradient(135deg,#f8fbf2,#edf7e8 58%,#f7fcf3);
+  color:#173420;
+  border-color:#79a36d;
+  box-shadow:0 14px 32px rgba(0,0,0,.15);
+}
+.portal-nature .national-strip h2{color:#173d24}
+.portal-nature .national-strip p{color:#58705d}
+.portal-nature .province-chip{
+  background:#fbfdf8;
+  color:#315c3d;
+  border-color:#86a77b;
+}
+.portal-nature .province-chip:hover{background:#e5f2df}
+
+.portal-nature :is(.control,.directory-link){
+  background:#fbfdf8;
+  color:#234c2e;
+  border-color:#7fa573;
+}
+.portal-nature .directory-link:hover{background:#eaf5e5}
+.portal-nature .help-banner{
+  background:linear-gradient(90deg,#eef7e9,#f8fbf3);
+  color:#173420;
+  border-color:#73966a;
+}
+.portal-nature .help-banner span{color:#5b715f}
+.portal-nature .help-banner a{background:#f9fcf6;color:#315c3d;border-color:#709b66}
+
+/* Community metrics are light sage rather than a stark white slab. */
+.portal-nature .community-stats{
+  background:
+    radial-gradient(circle at 88% 5%,rgba(183,229,150,.38),transparent 32%),
+    linear-gradient(135deg,#f7fbf2,#eaf5e5 68%,#f4faf0);
+  color:#173420;
+  border-color:#75a069;
+  box-shadow:0 14px 34px rgba(0,0,0,.17);
+}
+.portal-nature .community-stats-head h2{color:#173d24}
+.portal-nature :is(.community-stats-head p,.community-stats-note){color:#5b705e}
+.portal-nature .community-stat{
+  background:rgba(255,255,255,.72);
+  border-color:#9cba91;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+}
+.portal-nature .community-stat strong{color:#234b2d}
+.portal-nature .community-stat span:last-child{color:#637567}
+.portal-nature .community-stat-icon{background:#e7f2e1;box-shadow:inset 0 0 0 1px #9dbb92}
+.portal-nature .community-stats-live{
+  background:#dcefd2;
+  color:#315c3d;
+  border:1px solid #9cc384;
+}
+
+@media(max-width:1320px){
+  .portal-nature .header-row{grid-template-columns:minmax(0,1fr) max-content max-content}
+  .portal-nature .brand{grid-column:1;grid-row:1}
+  .portal-nature .header-publish{grid-column:2;grid-row:1}
+  .portal-nature .back{grid-column:3;grid-row:1}
+  .portal-nature .nav{grid-column:1/-1;grid-row:2;justify-content:flex-start;padding-bottom:7px}
+}
+@media(max-width:760px){
+  .portal-nature .hero{min-height:480px}
+  .portal-nature .hero-photo{
+    opacity:.34;
+    object-position:20% center;
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.65) 52%,transparent 82%);
+    mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.65) 52%,transparent 82%);
+  }
+  .portal-nature .hero::before{background-position:58% top;background-size:auto 108%;opacity:.68}
+  .portal-nature .hero::after{
+    background:
+      radial-gradient(circle at 52% 35%,rgba(240,255,226,.28),transparent 42%),
+      linear-gradient(180deg,rgba(7,21,13,.12) 0%,rgba(7,21,13,.30) 40%,#07150d 84%,#07150d 100%);
+  }
+}
+@media(max-width:600px){
+  .portal-nature .header-row{grid-template-columns:minmax(0,1fr) max-content}
+  .portal-nature .brand{grid-column:1;grid-row:1}
+  .portal-nature .back{grid-column:2;grid-row:1}
+  .portal-nature .header-publish{display:none}
+  .portal-nature .nav{grid-column:1/-1;grid-row:2}
+}
+
+
+/* Pass 43b — keep the wide desktop header in one row and surface the pet artwork. */
+.portal-nature .top .wrap{width:min(1900px,calc(100% - 20px))}
+@media(min-width:1561px){
+  .portal-nature .header-row{grid-template-columns:max-content minmax(0,1fr) max-content max-content;gap:8px}
+  .portal-nature .nav{justify-content:center;gap:1px}
+  .portal-nature .nav button{padding:8px 8px;font-size:.72rem}
+  .portal-nature .header-publish{padding:8px 13px;font-size:.74rem}
+  .portal-nature .back{padding:8px 12px;font-size:.74rem}
+}
+.portal-nature .hero-photo{
+  inset:auto 2% -4% auto;
+  width:min(39vw,670px);
+  height:91%;
+  object-fit:contain;
+  object-position:center bottom;
+  opacity:.28;
+  mix-blend-mode:screen;
+  filter:saturate(.84) brightness(1.18) contrast(1.03) drop-shadow(0 18px 32px rgba(0,0,0,.25));
+  -webkit-mask-image:radial-gradient(ellipse at 55% 58%,#000 0%,rgba(0,0,0,.95) 42%,rgba(0,0,0,.24) 76%,transparent 94%);
+  mask-image:radial-gradient(ellipse at 55% 58%,#000 0%,rgba(0,0,0,.95) 42%,rgba(0,0,0,.24) 76%,transparent 94%);
+}
+@media(max-width:1560px){
+  .portal-nature .header-row{grid-template-columns:minmax(0,1fr) max-content max-content}
+  .portal-nature .brand{grid-column:1;grid-row:1}
+  .portal-nature .header-publish{grid-column:2;grid-row:1}
+  .portal-nature .back{grid-column:3;grid-row:1}
+  .portal-nature .nav{grid-column:1/-1;grid-row:2;justify-content:flex-start;padding-bottom:7px}
+}
+@media(max-width:760px){
+  .portal-nature .hero-photo{
+    inset:auto -8% 2% auto;
+    width:76%;
+    height:72%;
+    opacity:.24;
+    object-position:center bottom;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 28%,rgba(0,0,0,.75) 70%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0%,#000 28%,rgba(0,0,0,.75) 70%,transparent 100%);
+  }
+}
+
+
+/* Pass 43c — valid dog/cat artwork blended into the nature threshold. */
+.portal-nature .hero::before{z-index:0}
+.portal-nature .hero::after{z-index:1}
+.portal-nature .hero-photo{
+  z-index:2;
+  inset:0 1% 0 auto;
+  width:min(52vw,820px);
+  height:100%;
+  object-fit:cover;
+  object-position:58% 60%;
+  opacity:.31;
+  mix-blend-mode:normal;
+  filter:saturate(.86) brightness(.94) contrast(1.04);
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.26) 16%,#000 44%,rgba(0,0,0,.88) 78%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.26) 16%,#000 44%,rgba(0,0,0,.88) 78%,transparent 100%);
+  pointer-events:none;
+  clip-path:inset(18% 0 0 0);
+}
+.portal-nature .hero-content{z-index:4}
+.portal-nature .nature-fireflies{z-index:3}
+@media(max-width:760px){
+  .portal-nature .hero-photo{
+    inset:auto -18% 3% auto;
+    width:88%;
+    height:74%;
+    object-fit:cover;
+    object-position:54% 64%;
+    opacity:.20;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 24%,rgba(0,0,0,.82) 72%,transparent 100%);
+    mask-image:linear-gradient(180deg,transparent 0%,#000 24%,rgba(0,0,0,.82) 72%,transparent 100%);
+  }
+}

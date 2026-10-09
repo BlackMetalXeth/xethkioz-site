@@ -19,6 +19,10 @@
   },
   "trailingSlash": false,
   "redirects": [
+    { "source": "/world-of-xethkioz", "destination": "/world-of-xethkioz/elemental-realms", "permanent": true },
+    { "source": "/en/world-of-xethkioz", "destination": "/en/world-of-xethkioz/elemental-realms", "permanent": true },
+    { "source": "/tripo", "destination": "https://studio.tripo3d.ai/?utm_source=creator_invite&utm_medium=linkcopy&utm_campaign=VXH2GZ&utm_content=2251799814429939", "permanent": false },
+    { "source": "/starlink", "destination": "https://starlink.com?referral=RC-DF-13005453-64032-82", "permanent": false },
     {"source": "/nexus-city", "destination": "/community", "permanent": true},
     {"source": "/nexus-city/:path*", "destination": "/community", "permanent": true},
     {"source": "/en/nexus-city", "destination": "/en/community", "permanent": true},
@@ -30,14 +34,18 @@
     { "source": "/admin", "destination": "/cms", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/digital/cursos", "destination": "/seo-shells/digital-cursos.html" },
+    { "source": "/en/digital/cursos", "destination": "/seo-shells/en-digital-cursos.html" },
+    { "source": "/digital", "destination": "/seo-shells/digital.html" },
+    { "source": "/en/digital", "destination": "/seo-shells/en-digital.html" },
     { "source": "/mascotas", "destination": "/mascotas/index.html" },
     { "source": "/mascotas/", "destination": "/mascotas/index.html" },
     { "source": "/sitemap.xml", "destination": "/api/sitemap" },
     { "source": "/news-sitemap.xml", "destination": "/api/news-sitemap" },
     { "source": "/feed.xml", "destination": "/api/feed" },
     { "source": "/", "destination": "/index.html" },
-    { "source": "/world-of-xethkioz", "destination": "/seo-shells/world-of-xethkioz.html" },
-    { "source": "/en/world-of-xethkioz", "destination": "/seo-shells/en-world-of-xethkioz.html" },
+    { "source": "/world-of-xethkioz/elemental-realms", "destination": "/seo-shells/world-of-xethkioz-elemental-realms.html" },
+    { "source": "/en/world-of-xethkioz/elemental-realms", "destination": "/seo-shells/en-world-of-xethkioz-elemental-realms.html" },
     { "source": "/en", "destination": "/seo-shells/en-home.html" },
     { "source": "/en/gaming/guides", "destination": "/seo-shells/en-gaming-guides.html" },
     { "source": "/en/gaming", "destination": "/seo-shells/en-gaming.html" },
@@ -193,11 +201,11 @@
         { "key": "X-DNS-Prefetch-Control", "value": "off" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Cross-Origin-Opener-Policy", "value": "same-origin-allow-popups" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=()" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(self \"https://www.paypal.com\"), usb=()" },
         { "key": "Origin-Agent-Cluster", "value": "?1" },
         { "key": "X-Permitted-Cross-Domain-Policies", "value": "none" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.clarity.ms https://connect.facebook.net; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://*.supabase.co wss://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com https://www.facebook.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.twitch.tv https://www.twitch.tv; worker-src 'self' blob:; manifest-src 'self'; form-action 'self'; upgrade-insecure-requests" },
-        { "key": "Content-Security-Policy-Report-Only", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' https://*.googletagmanager.com https://*.clarity.ms https://connect.facebook.net; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://*.supabase.co wss://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com https://www.facebook.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.twitch.tv https://www.twitch.tv; worker-src 'self' blob:; manifest-src 'self'; form-action 'self'" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.clarity.ms https://connect.facebook.net https://www.paypal.com https://www.paypalobjects.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://*.supabase.co wss://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com https://www.facebook.com https://www.paypal.com https://*.paypal.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.paypal.com https://*.paypal.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self'; upgrade-insecure-requests" },
+        { "key": "Content-Security-Policy-Report-Only", "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' https://*.googletagmanager.com https://*.clarity.ms https://connect.facebook.net https://www.paypal.com https://www.paypalobjects.com; script-src-attr 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com https://*.supabase.co wss://*.supabase.co https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.clarity.ms https://c.bing.com https://www.facebook.com https://www.paypal.com https://*.paypal.com; frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.paypal.com https://*.paypal.com; worker-src 'self' blob:; manifest-src 'self'; form-action 'self'" }
       ]
     },
     {

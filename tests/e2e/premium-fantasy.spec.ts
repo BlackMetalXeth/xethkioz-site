@@ -1,129 +1,76 @@
-import { expect, test } from '@playwright/test'
+import { expect, test, type Page } from '@playwright/test'
 import AxeBuilder from '@axe-core/playwright'
 
-async function essentials(page: import('@playwright/test').Page) {
-  const button = page.getByRole('button', { name: /solo esenciales|essential only/i })
-  if (await button.first().isVisible()) await button.first().click()
+async function essentials(page: Page) {
+  const banner = page.locator('.xk-privacy-consent-banner')
+  if (await banner.isVisible()) await banner.getByRole('button', { name: /solo esenciales|essential only/i }).click()
 }
-test('Premium Home conserva rutas, CTA real y canales oficiales sin video', async ({ page }) => {
+
+test('Portal Home: tres umbrales grandes en fila y la fractura debajo, sin bloques duplicados', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 })
   await page.goto('/'); await essentials(page)
-  await expect(page.locator('.wox-actions a').first()).toHaveAttribute('href', '/world-of-xethkioz')
-  await expect(page.locator('.wox-bg img')).toHaveAttribute('src', '/assets/xethkioz-world-panorama-2026.webp')
-  await expect(page.locator('.xk-world-signature img')).toHaveAttribute('src', '/assets/world-of-xethkioz/world-of-xethkioz-logo.png')
-  await expect(page.locator('.wox-status')).toHaveText('GAMING · TECNOLOGÍA · CREACIÓN')
-  await expect(page.locator('.xk-hero-doors a')).toHaveCount(3)
-  await expect(page.locator('#veyr')).toContainText('VEYR es un asistente local')
-  await expect(page.locator('.xk-studio-story')).toContainText('USD 350 de referencia')
-  await expect(page.locator('video, iframe, canvas')).toHaveCount(0)
-  await expect(page.locator('.wox-ecosystem-card')).toHaveCount(3)
-  await expect(page.locator('.xk-network-links a')).toHaveCount(2)
-  await expect(page.locator('.wox-support-side li')).toHaveCount(3)
-  await expect(page.locator('.wox-footer-premium')).toBeVisible()
-  const links = await page.locator('.wox-footer-social a').evaluateAll(items => items.map(a => a.getAttribute('href')))
-  expect(links[0]).toBe('https://www.xethkioz.com.ar')
-  expect(links[1]).toBe('https://www.threads.com/@xethkioz')
-  expect(links.join(' ')).not.toMatch(/twitch|kick\.com/i)
-  const result = await new AxeBuilder({ page }).include('.wox-home').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()
-  expect(result.violations).toEqual([])
-})
-test('El panorama aprobado se ve detrás de tres portales legibles en escritorio', async ({ page }) => {
-  await page.setViewportSize({ width: 1440, height: 936 })
-  await page.goto('/'); await essentials(page)
-  const logo = page.locator('.xk-world-signature img')
-  await expect(logo).toHaveAttribute('src', '/assets/world-of-xethkioz/world-of-xethkioz-logo.png')
-  await expect(logo).toBeHidden() // La ilustración ya incorpora la firma visual.
-  const geometry = await page.evaluate(() => {
-    const hero = document.querySelector('.wox-hero')!.getBoundingClientRect()
-    const portals = [...document.querySelectorAll('.xk-hero-doors a')].map(link => link.getBoundingClientRect())
-    return {
-      heroLeft: hero.left,
-      heroRight: hero.right,
-      viewport: innerWidth,
-      portalsFit: portals.every(rect => rect.left >= 0 && rect.right <= innerWidth + 1 && rect.width >= 200),
-      background: document.querySelector('.wox-bg img')?.getAttribute('src'),
-    }
+  await expect(page.getByRole('heading', {level:1})).toHaveAccessibleName('World of Xethkioz')
+  await expect(page.locator('.portal-gate')).toHaveCount(3)
+  await expect(page.locator('.portal-node-rift')).toHaveCount(1)
+  await expect(page.locator('.portal-navigation')).toHaveCount(1)
+  await expect(page.locator('.portal-footer')).toHaveCount(1)
+  await expect(page.locator('video,iframe,canvas,.xk-veyr-story,.xk-studio-story,.xk-global-footer')).toHaveCount(0)
+  await expect(page.locator('.portal-gate[data-tone="fire"]')).toHaveAttribute('href','/world-of-xethkioz/elemental-realms')
+  await expect(page.locator('.portal-gate[data-tone="nature"]')).toHaveAttribute('href','/mascotas/')
+  await expect(page.locator('.portal-gate[data-tone="ice"]')).toHaveAttribute('href','/digital')
+  const geometry=await page.evaluate(()=>{
+    const gates=[...document.querySelectorAll('.portal-gate')].map(e=>e.getBoundingClientRect()), rift=document.querySelector('.portal-node-rift')!.getBoundingClientRect()
+    return {aligned:Math.max(...gates.map(r=>r.top))-Math.min(...gates.map(r=>r.top))<2, widths:gates.map(r=>r.width), below:rift.top>=Math.max(...gates.map(r=>r.bottom))-2,riftWidth:rift.width,overflow:document.documentElement.scrollWidth>innerWidth+1}
   })
-  expect(geometry.heroLeft).toBeLessThanOrEqual(1)
-  expect(geometry.heroRight).toBeGreaterThanOrEqual(geometry.viewport - 1)
-  expect(geometry.portalsFit).toBe(true)
-  expect(geometry.background).toBe('/assets/xethkioz-world-panorama-2026.webp')
+  expect(geometry.aligned).toBe(true);expect(geometry.below).toBe(true);expect(geometry.overflow).toBe(false)
+  expect(Math.min(...geometry.widths)).toBeGreaterThan(390);expect(geometry.riftWidth).toBeGreaterThan(1200)
+  await expect(page.locator('.portal-footer a.portal-paypal')).toHaveAttribute('href','https://www.paypal.com/ncp/payment/VT4476UQ76F4S')
+  await expect(page.locator('.portal-footer a.portal-mercadopago')).toHaveAttribute('href','https://link.mercadopago.com.ar/xethkioz')
+  const socials=await page.locator('.portal-socials a').evaluateAll(a=>a.map(e=>e.getAttribute('href')))
+  expect(socials).toContain('https://www.threads.com/@xethkioz');expect(socials).toContain('https://www.instagram.com/xethkioz')
+  expect(socials.join(' ')).not.toMatch(/twitch|kick\.com/)
 })
-test('Portal fantasy: video del fundador, Veyr canónica, FAQ y contenido público reservado', async ({ page }) => {
-  await page.goto('/world-of-xethkioz'); await essentials(page)
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Atravesá el umbral.')
-  await expect(page.locator('.woxp-game-logo')).toBeVisible()
-  await expect(page.locator('.woxp-game-status')).toHaveText('ACTION RPG INDEPENDIENTE')
-  const founderVideo = page.locator('.woxp-founder-video')
-  await expect(founderVideo).toBeVisible()
-  await expect(founderVideo).toHaveAttribute('controls', '')
-  await expect(founderVideo).toHaveAttribute('preload', 'metadata')
-  await expect(founderVideo.locator('source')).toHaveAttribute('src', /founder-vision\.mp4$/)
-  expect(await founderVideo.getAttribute('autoplay')).toBeNull()
-  await expect(page.locator('iframe, canvas')).toHaveCount(0)
-  await expect(page.locator('.woxp-concept-gallery figure')).toHaveCount(3)
-  await expect(page.locator('.woxp-development-card')).toHaveCount(3)
-  await expect(page.locator('.woxp-development-card').nth(0)).toContainText('La identidad visual combina fantasía')
-  await expect(page.locator('.woxp-development-card').nth(1)).toContainText('Action RPG con exploración, progresión y descubrimiento')
-  await expect(page.locator('.woxp-development-card').nth(2)).toContainText('Threads e Instagram')
-  await expect(page.locator('#convergencia .woxp-veyr-character img')).toHaveAttribute('src', /veyr-good\.webp$/)
-  await expect(page.locator('#convergencia .woxp-veyr-character')).toBeVisible()
-  await page.locator('#preguntas summary').first().click()
-  await expect(page.locator('#preguntas details').first()).toHaveAttribute('open','')
-  expect(await page.locator('.wox-portal').innerText()).not.toMatch(/M\d{2}[–-]M\d{2}|QuestID|Boss\d+/)
-  await expect(page.locator('.woxp-art-caption')).toContainText('NO ES GAMEPLAY')
-  const result = await new AxeBuilder({ page }).include('.wox-portal').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()
-  expect(result.violations).toEqual([])
+
+for(const prefix of ['', '/en']) test(`El juego abre directamente y conserva el enlace antiguo: ${prefix||'es'}`, async ({page})=>{
+  await page.goto(`${prefix}/world-of-xethkioz#alpha-2`);await essentials(page)
+  await expect(page).toHaveURL(new RegExp(`${prefix}/world-of-xethkioz/elemental-realms#alpha-2$`))
+  await expect(page.locator('.portal-game')).toHaveAttribute('data-portal-theme','fire')
+  await expect(page.locator('.portal-game video')).toHaveCount(1)
+  const video=page.locator('#alpha-2 video')
+  await expect(video).toHaveAttribute('controls','');await expect(video).toHaveAttribute('preload','metadata')
+  expect(await video.getAttribute('autoplay')).toBeNull()
+  await expect(video.locator('source')).toHaveAttribute('src','/assets/world-of-xethkioz/media/elemental-realms-alpha-2.mp4')
+  await expect(page.locator('.portal-character')).toHaveCount(2)
+  await expect(page.locator('.is-veyr')).toContainText('Veyr');await expect(page.locator('.is-rabbit')).toContainText('B-Rabbit')
+  await expect(page.locator('img[src*="veyr-good"]')).toHaveCount(0)
+  await page.locator('.portal-game__history summary').click()
+  await expect(page.locator('.portal-game video')).toHaveCount(3)
+  await expect(page.locator('.portal-game__archive video[preload="none"]')).toHaveCount(2)
+  await page.locator('.portal-game__history summary').click()
+  await expect(page.locator('.portal-game video')).toHaveCount(1)
+  await expect(page.locator('.portal-game__faq details')).toHaveCount(3)
 })
-test('English game portal conserva idioma, rutas y sin duplicar cabecera', async ({ page }) => {
-  await page.goto('/en/world-of-xethkioz'); await essentials(page)
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Cross the threshold.')
-  await expect(page.locator('.xkf-header')).toHaveCount(1)
-  await expect(page.getByText('02 / FOUNDER VISION', { exact: true })).toBeVisible()
-  await expect(page.locator('.woxp-founder-video')).toBeVisible()
-  await page.getByRole('button', { name: 'Switch to Spanish', exact: true }).click()
-  await expect(page).toHaveURL(/\/world-of-xethkioz$/)
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Atravesá el umbral.')
+
+test('La antigua ancla de la visión del fundador abre su archivo bajo demanda',async({page})=>{
+  await page.goto('/world-of-xethkioz/elemental-realms#mundo');await essentials(page)
+  await expect(page.locator('.portal-game__history')).toHaveAttribute('open','')
+  await expect(page.locator('#mundo video')).toBeAttached()
 })
-test('Veyr flotante usa el PNJ canónico y nunca pisa el chat', async ({ page }) => {
-  for (const width of [390,1440]) {
-    await page.setViewportSize({ width, height: width < 600 ? 844 : 1000 })
-    await page.goto('/world-of-xethkioz'); await essentials(page)
-    const veyr = page.locator('.xk-wisp.is-world-veyr')
-    const chat = page.getByRole('button', { name: 'Abrir XETHKIOZ Nexus Chat' })
-    await expect(veyr).toBeVisible()
-    await expect(veyr).toHaveAttribute('aria-label', /Veyr/)
-    await expect(veyr.locator('.xk-wisp-specter-veyr')).toHaveAttribute('src', /veyr-good\.webp$/)
-    await expect(chat).toBeVisible()
-    const overlap = await page.evaluate(() => {
-      const a = document.querySelector('.xk-wisp.is-world-veyr')!.getBoundingClientRect()
-      const b = document.querySelector('button[aria-label="Abrir XETHKIOZ Nexus Chat"]')!.getBoundingClientRect()
-      return !(a.right <= b.left || a.left >= b.right || a.bottom <= b.top || a.top >= b.bottom)
-    })
-    expect(overlap).toBeFalsy()
-    await veyr.click()
-    await expect(page.getByRole('button', { name: 'Cerrar XETHKIOZ Nexus Chat' })).toBeVisible()
-    await expect(veyr).toBeHidden()
-  }
+
+test('Efectos: pausa persistente, partículas limitadas y respeto a movimiento reducido',async({page})=>{
+  await page.emulateMedia({reducedMotion:'reduce'});await page.goto('/');await essentials(page)
+  await expect(page.locator('.portal-effects-toggle')).toHaveAttribute('aria-pressed','false')
+  await expect(page.locator('.portal-fx').first()).toBeHidden()
+  await page.emulateMedia({reducedMotion:'no-preference'})
+  // A temporary system pause must not overwrite the visitor's saved preference.
+  await expect(page.locator('html')).toHaveAttribute('data-portal-effects','on')
+  expect(await page.locator('.portal-fx i').count()).toBeLessThanOrEqual(36)
+  await page.locator('.portal-effects-toggle').click();await page.reload()
+  await expect(page.locator('.portal-effects-toggle')).toHaveAttribute('aria-pressed','false')
 })
-test('Green Node flotante no pisa el chat en Inicio', async ({ page }) => {
-  for (const width of [390, 1440]) {
-    await page.setViewportSize({ width, height: 844 })
-    await page.goto('/'); await essentials(page)
-    const overlap = await page.evaluate(() => {
-      const wisp = document.querySelector('.xk-wisp.is-home-entry')!.getBoundingClientRect()
-      const chat = document.querySelector('button[aria-controls="nexus-chat-panel"]')!.getBoundingClientRect()
-      return !(wisp.right <= chat.left || wisp.left >= chat.right || wisp.bottom <= chat.top || wisp.top >= chat.bottom)
-    })
-    expect(overlap).toBe(false)
-  }
-})
-test('Fantasy conserva lectura sin desborde en teléfonos estrechos', async ({ page }) => {
-  for (const width of [320,390,768]) {
-    await page.setViewportSize({width,height:844})
-    for(const route of ['/', '/world-of-xethkioz']) {
-      await page.goto(route); await essentials(page)
-      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBeTruthy()
-      await expect(page.locator('main[data-public-presentation="fantasy"]')).toBeVisible()
-    }
-  }
+
+for(const route of ['/', '/world-of-xethkioz/elemental-realms','/digital'])test(`Portal accesible sin violaciones WCAG: ${route}`,async({page})=>{
+  await page.goto(route);await essentials(page)
+  const result=await new AxeBuilder({page}).include('#main-content').withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()
+  expect(result.violations.map(v=>({id:v.id,nodes:v.nodes.map(n=>n.target)}))).toEqual([])
 })
