@@ -9,6 +9,8 @@ import './WorldOfXethkiozLanding.css'
 import './HomePremiumClosure.css'
 import './HomeGateway.css'
 import './HomePortalCinematic.css'
+import './HomeRadiant2026.css'
+import './HomeGreenNodeCelestial.css'
 
 function openNexusChat() {
   window.dispatchEvent(new CustomEvent('xethkioz:nexus-chat-open', { detail: { room: 'general' } }))
@@ -17,11 +19,11 @@ function openNexusChat() {
 const socialNames = ['Threads', 'Instagram', 'TikTok Principal', 'YouTube']
 const copy = {
   es: {
-    seo: 'XETHKIOZ · Gaming, tecnología y creación',
-    description: 'Noticias y guías con mirada propia, World of Xethkioz en desarrollo, VEYR IA Local y creación web para proyectos reales.',
-    status: 'GAMING · TECNOLOGÍA · CREACIÓN',
-    soul: 'Más allá del juego.',
-    lead: 'Soy Alexis. Creo un mundo para jugar, una IA local para trabajar y webs para hacer crecer proyectos reales.',
+    seo: 'XETHKIOZ · Fantasía, tecnología y naturaleza',
+    description: 'Cuatro portales para descubrir, crear y crecer: World of Xethkioz, Huellas Argentina, tecnología y Green Node.',
+    status: 'FANTASÍA · NATURALEZA · TECNOLOGÍA · AVENTURA',
+    soul: 'Un universo para descubrir.',
+    lead: 'Descubrí historias, naturaleza y tecnología que inspiran. Cuatro portales para jugar, crear, aprender y conectar.',
     explore: 'Explorar el juego',
     follow: 'Conocer VEYR',
     worldNote: 'ACTION RPG INDEPENDIENTE · EN DESARROLLO',
@@ -46,7 +48,6 @@ const copy = {
     routes: [
       { code: '01', kicker: 'ACTUALIDAD', title: 'Noticias', description: 'Gaming y tecnología con contexto, fuentes y una mirada propia.', action: 'Leer noticias', route: '/news', glyph: '⌁', tone: 'news' },
       { code: '02', kicker: 'PARA JUGAR MEJOR', title: 'Biblioteca gamer', description: 'Guías, builds y referencias para elegir y avanzar.', action: 'Abrir biblioteca', route: '/gaming', glyph: '◇', tone: 'gaming' },
-      { code: '03', kicker: 'APRENDER', title: 'Green Node', description: 'Programación, Linux y seguridad digital explicados paso a paso.', action: 'Explorar Green Node', route: '/green-node', glyph: '✦', tone: 'green' },
     ],
     supportEyebrow: 'PRODUCCIÓN INDEPENDIENTE',
     supportTitle: 'Ayudá a sostener lo que viene.',
@@ -64,11 +65,11 @@ const copy = {
     caption: 'ILUSTRACIÓN PROMOCIONAL · NO ES GAMEPLAY',
   },
   en: {
-    seo: 'XETHKIOZ · Gaming, technology and creation',
-    description: 'Gaming news and guides, World of Xethkioz in development, VEYR local AI and web creation for real projects.',
-    status: 'GAMING · TECHNOLOGY · CREATION',
-    soul: 'Beyond the game.',
-    lead: 'I’m Alexis. I’m building a world to play, a local AI to work with, and websites that help real projects grow.',
+    seo: 'XETHKIOZ · Fantasy, technology and nature',
+    description: 'Four worlds to discover, create and grow: World of Xethkioz, Huellas Argentina, technology and Green Node.',
+    status: 'FANTASY · NATURE · TECHNOLOGY · ADVENTURE',
+    soul: 'A world of possibilities.',
+    lead: 'Discover stories, nature and inspiring technology. Four gateways to play, create, learn and connect.',
     explore: 'Explore the game',
     follow: 'Meet VEYR',
     worldNote: 'INDEPENDENT ACTION RPG · IN DEVELOPMENT',
@@ -93,7 +94,6 @@ const copy = {
     routes: [
       { code: '01', kicker: 'CURRENT', title: 'News', description: 'Gaming and technology with context, sources and an independent perspective.', action: 'Read news', route: '/news', glyph: '⌁', tone: 'news' },
       { code: '02', kicker: 'PLAY BETTER', title: 'Gaming library', description: 'Guides, builds and references to help you choose and progress.', action: 'Open library', route: '/gaming', glyph: '◇', tone: 'gaming' },
-      { code: '03', kicker: 'LEARN', title: 'Green Node', description: 'Programming, Linux and digital security explained step by step.', action: 'Explore Green Node', route: '/green-node', glyph: '✦', tone: 'green' },
     ],
     supportEyebrow: 'INDEPENDENT PRODUCTION',
     supportTitle: 'Help sustain what comes next.',
@@ -114,7 +114,7 @@ const copy = {
 
 export default function Home() {
   const { lang, localizePath } = useLang()
-  const [featuredPortal, setFeaturedPortal] = useState<'world' | 'veyr' | 'studio'>('world')
+  const [featuredPortal, setFeaturedPortal] = useState<'world' | 'nature' | 'studio' | 'green'>('world')
   const t = copy[lang]
   const socials = socialNames.flatMap(name => SOCIAL_LINKS.filter(item => item.name === name))
   const gamePath = localizePath('/world-of-xethkioz')
@@ -130,7 +130,7 @@ export default function Home() {
   return (
     <>
       <SEO title={t.seo} description={t.description} url="/" image="/assets/world-of-xethkioz/world-of-xethkioz-logo.webp" />
-      <main className="wox-home xk-gateway" data-public-presentation="fantasy">
+      <main className="wox-home xk-gateway xk-radiant-2026" data-public-presentation="fantasy">
         <FantasyNavigation />
         <section className="wox-hero" aria-labelledby="wox-title" data-featured-portal={featuredPortal}>
           <picture className="wox-bg" aria-hidden="true"><img src="/assets/xethkioz-world-panorama-2026.webp" alt="" width="1672" height="941" fetchPriority="high" decoding="async" /></picture>
@@ -138,11 +138,24 @@ export default function Home() {
             <p className="wox-status">{t.status}</p>
             <h1 id="wox-title"><span>XETHKIOZ</span>{t.soul}</h1><p className="wox-lead">{t.lead}</p>
             <div className="wox-actions"><Link to={gamePath}>{t.explore} <span aria-hidden="true">↗</span></Link></div>
-            <nav className="xk-hero-doors" aria-label={lang === 'es' ? 'Red de portales: elegí un proyecto' : 'Portal network: choose a project'}>
-              <p>{lang === 'es' ? 'RED DE PORTALES / ELEGÍ POR DÓNDE EMPEZAR' : 'PORTAL NETWORK / CHOOSE WHERE TO BEGIN'}</p>
-              <Link className="is-world" to={gamePath} onMouseEnter={() => setFeaturedPortal('world')} onFocus={() => setFeaturedPortal('world')}><span className="xk-portal-face" aria-hidden="true"><i>W</i></span><span className="xk-portal-name"><small>01 / {lang === 'es' ? 'EL JUEGO' : 'THE GAME'}</small>World of Xethkioz<em>{lang === 'es' ? 'Entrar al universo' : 'Enter the world'} <b aria-hidden="true">↗</b></em></span></Link>
-              <a className="is-veyr" href="#veyr" onMouseEnter={() => setFeaturedPortal('veyr')} onFocus={() => setFeaturedPortal('veyr')} onMouseLeave={() => setFeaturedPortal('world')} onBlur={() => setFeaturedPortal('world')}><span className="xk-portal-face" aria-hidden="true"><i>V</i></span><span className="xk-portal-name"><small>02 / {lang === 'es' ? 'IA LOCAL' : 'LOCAL AI'}</small>VEYR<em>{t.veyrLabel} <b aria-hidden="true">↓</b></em></span></a>
-              <Link className="is-studio" to={`${studioPath}#landing-esencial`} onMouseEnter={() => setFeaturedPortal('studio')} onFocus={() => setFeaturedPortal('studio')} onMouseLeave={() => setFeaturedPortal('world')} onBlur={() => setFeaturedPortal('world')}><span className="xk-portal-face" aria-hidden="true"><i>✦</i></span><span className="xk-portal-name"><small>03 / {lang === 'es' ? 'CREACIÓN' : 'CREATION'}</small>XETHKIOZ Studio<em>{t.studioLabel} <b aria-hidden="true">↗</b></em></span></Link>
+            <nav className="xk-hero-doors" aria-label={lang === 'es' ? 'Cuatro portales principales de XETHKIOZ' : 'Four main XETHKIOZ portals'}>
+              <p>{lang === 'es' ? 'ELEGÍ TU PRÓXIMA AVENTURA' : 'CHOOSE YOUR NEXT ADVENTURE'}</p>
+              <Link className="is-world" to={gamePath} onMouseEnter={() => setFeaturedPortal('world')} onFocus={() => setFeaturedPortal('world')}>
+                <span className="xk-portal-face" aria-hidden="true"><i>✦</i></span>
+                <span className="xk-portal-name"><small>01 / {lang === 'es' ? 'AVENTURA ÉPICA' : 'EPIC ADVENTURE'}</small>World of Xethkioz<em>{lang === 'es' ? 'Elemental Realms · Explorar el mundo' : 'Elemental Realms · Explore the world'} <b aria-hidden="true">↗</b></em></span>
+              </Link>
+              <a className="is-nature" href="/mascotas/" onMouseEnter={() => setFeaturedPortal('nature')} onFocus={() => setFeaturedPortal('nature')}>
+                <span className="xk-portal-face" aria-hidden="true"><i>❀</i></span>
+                <span className="xk-portal-name"><small>02 / {lang === 'es' ? 'NATURALEZA Y COMUNIDAD' : 'NATURE AND COMMUNITY'}</small>Huellas Argentina<em>{lang === 'es' ? 'Mascotas · Cuidado y esperanza' : 'Pets · Care and hope'} <b aria-hidden="true">↗</b></em></span>
+              </a>
+              <Link className="is-studio" to={studioPath} onMouseEnter={() => setFeaturedPortal('studio')} onFocus={() => setFeaturedPortal('studio')}>
+                <span className="xk-portal-face" aria-hidden="true"><i>◇</i></span>
+                <span className="xk-portal-name"><small>03 / {lang === 'es' ? 'CREACIÓN E INNOVACIÓN' : 'CREATE AND INNOVATE'}</small>Tecnología y Web<em>{lang === 'es' ? 'Creación web · VEYR · ArgenCiencia' : 'Web creation · VEYR · ArgenCiencia'} <b aria-hidden="true">↗</b></em></span>
+              </Link>
+              <Link className="is-green" to={localizePath('/green-node')} onMouseEnter={() => setFeaturedPortal('green')} onFocus={() => setFeaturedPortal('green')}>
+                <span className="xk-portal-face" aria-hidden="true"><i>⌘</i></span>
+                <span className="xk-portal-name"><small>04 / {lang === 'es' ? 'NETWORK · SISTEMAS · SEGURIDAD' : 'NETWORK · SYSTEMS · SECURITY'}</small>Green Node<span className="xk-green-node-subtitle">{lang === 'es' ? 'Tecnología, sistemas y conexiones inteligentes.' : 'Technology, systems and intelligent connections.'}</span><em>{lang === 'es' ? 'EXPLORAR SISTEMA' : 'EXPLORE SYSTEM'} <b aria-hidden="true">↗</b></em></span>
+              </Link>
             </nav>
           </div>
           <div className="xk-world-signature"><img src="/assets/world-of-xethkioz/world-of-xethkioz-logo.png" alt="World of Xethkioz" width="1584" height="483" decoding="async" /><span>{t.worldNote}</span></div>

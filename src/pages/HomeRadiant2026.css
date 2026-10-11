@@ -1,0 +1,407 @@
+/* XETHKIOZ 2026: luminous direction, deliberately scoped to the public homepage.
+ * No new dependencies, API calls, video autoplay, or changes to protected content.
+ * Existing portal links and application providers remain authoritative.
+ */
+.xk-radiant-2026 {
+  --xk-sky: #e9f6ff;
+  --xk-cloud: #fffdf5;
+  --xk-forest: #2c7968;
+  --xk-gold: #bc803b;
+  --xk-iris: #815cb2;
+  --xk-deep: #16343e;
+  --xk-muted: #425e66;
+  --xk-line: rgba(42, 98, 103, .22);
+  --wox-gold: var(--xk-gold);
+  --wox-line: var(--xk-line);
+  background: linear-gradient(180deg, #f3f9f7, #fefcf4 65%, #eef8f5);
+  color: var(--xk-deep);
+  color-scheme: light;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-hero {
+  min-height: max(760px, 100svh);
+  max-width: 1920px;
+  display: flex;
+  align-items: center;
+  padding: clamp(108px, 12vh, 150px) clamp(22px, 4vw, 72px) 96px;
+  background: #cbe8e8;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-bg { inset: 0; }
+.wox-home.xk-gateway.xk-radiant-2026 .wox-bg img {
+  object-position: center 43%;
+  filter: brightness(1.16) saturate(1.1) contrast(.94);
+  transform: scale(1.008);
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-bg::after {
+  content: '';
+  background:
+    linear-gradient(90deg, rgba(245,253,250,.89), rgba(236,248,246,.75) 39%, rgba(226,243,241,.43) 70%, rgba(217,237,237,.48)),
+    linear-gradient(180deg, rgba(242,250,248,.46), transparent 34%, rgba(250,253,246,.58) 69%, #f3f9f7 100%);
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-hero::after {
+  inset: 0;
+  opacity: .65;
+  background: radial-gradient(ellipse at 82% 12%, rgba(255,245,198,.53), transparent 48%);
+  transition: opacity .35s ease, background .35s ease;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-hero[data-featured-portal='nature']::after {
+  opacity: .82;
+  background: radial-gradient(ellipse at 70% 30%, rgba(153,223,173,.4), transparent 56%);
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-hero[data-featured-portal='green']::after {
+  opacity: .82;
+  background: radial-gradient(ellipse at 70% 30%, rgba(120,205,169,.39), transparent 56%);
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-hero-core {
+  width: min(1320px, 100%);
+  max-width: 1320px;
+  margin: 0 auto;
+  z-index: 3;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-status {
+  width: fit-content;
+  margin: 0 0 14px;
+  padding: 8px 14px;
+  border: 1px solid rgba(70,131,129,.3);
+  border-radius: 999px;
+  background: rgba(255,255,250,.66);
+  color: #315c59;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  backdrop-filter: blur(12px);
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-hero h1 {
+  max-width: 960px;
+  color: #12333b;
+  font-size: clamp(42px, 5.3vw, 84px);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -.063em;
+  text-shadow: 0 3px 34px rgba(255,255,255,.45);
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-hero h1 span {
+  margin-bottom: 13px;
+  color: #7656a8;
+  font-size: clamp(17px, 1.65vw, 24px);
+  letter-spacing: .25em;
+  text-shadow: none;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-lead {
+  max-width: 690px;
+  margin-top: 20px;
+  color: #254b53;
+  font-size: clamp(16px, 1.38vw, 19px);
+  line-height: 1.62;
+  font-weight: 530;
+  text-shadow: 0 2px 14px rgba(255,255,255,.68);
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-actions a,
+.xk-radiant-2026 .wox-actions a:first-child {
+  border: 1px solid #286c64;
+  border-radius: 12px;
+  background: #28796c;
+  color: #fff;
+  box-shadow: 0 13px 32px rgba(34,111,99,.2);
+  font-weight: 750;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.xk-radiant-2026 .wox-actions a:hover,
+.xk-radiant-2026 .wox-actions a:focus-visible { background: #1d5f55; transform: translateY(-2px); }
+.wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  margin-top: clamp(35px, 5vw, 72px);
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > p {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+  color: #245651;
+  text-shadow: none;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: .20em;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > a {
+  --portal-light: #8760ac;
+  --portal-image: url('/assets/portal-games-world-v3.webp');
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 10px;
+  width: auto;
+  min-height: 212px;
+  margin: 0;
+  padding: 21px;
+  clip-path: none;
+  border: 1px solid rgba(255,255,255,.91);
+  border-radius: 23px;
+  background: rgba(255,255,255,.85);
+  color: #17323b;
+  box-shadow: 0 12px 46px rgba(40,85,82,.13), inset 0 0 0 1px rgba(66,118,112,.13);
+  backdrop-filter: blur(16px);
+  transition: transform .27s ease, box-shadow .27s ease, border-color .27s ease;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > a.is-nature {
+  --portal-light: #2d8f70;
+  --portal-image: url('/assets/portal-mascotas-nature-v11-r2.webp');
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > a.is-studio {
+  --portal-light: #387ea6;
+  --portal-image: url('/assets/portal-science-clean-v1.webp');
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > a.is-green {
+  --portal-light: #338d69;
+  --portal-image: linear-gradient(135deg,#d1e9d9,#84cbb7);
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > a::before {
+  inset: 0;
+  z-index: -1;
+  opacity: 1;
+  border-radius: inherit;
+  background-image: linear-gradient(180deg, rgba(252,255,250,.47), rgba(248,254,250,.95) 82%), var(--portal-image);
+  background-size: cover;
+  background-position: center;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > a::after {
+  content: '';
+  position: absolute;
+  inset: auto 20px 0;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--portal-light);
+  opacity: .9;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-portal-face {
+  display: grid;
+  place-items: center;
+  flex: 0 0 51px;
+  width: 51px;
+  height: 51px;
+  border: 1px solid color-mix(in srgb, var(--portal-light) 45%, #fff);
+  border-radius: 16px;
+  background: rgba(255,255,255,.81);
+  box-shadow: 0 5px 16px rgba(34,88,80,.11);
+  transform: none;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-portal-face::before,
+.wox-home.xk-gateway.xk-radiant-2026 .xk-portal-face::after { content: none; }
+.wox-home.xk-gateway.xk-radiant-2026 .xk-portal-face i {
+  font-family: Georgia, serif;
+  font-size: 25px;
+  color: var(--portal-light);
+  text-shadow: none;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-portal-name {
+  max-width: none;
+  color: #15333d;
+  font-size: clamp(17px, 1.4vw, 20px);
+  font-weight: 790;
+  line-height: 1.18;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-portal-name small {
+  margin-bottom: 8px;
+  color: #345b62;
+  font-size: 10px;
+  letter-spacing: .12em;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-portal-name em {
+  margin-top: 9px;
+  color: #305861;
+  font-size: 12px;
+  line-height: 1.35;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .xk-portal-name b { color: #295b5b; }
+@media (hover: hover) and (pointer: fine) {
+  .wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > a:hover {
+    transform: translateY(-6px);
+    border-color: color-mix(in srgb, var(--portal-light) 42%, #fff);
+    box-shadow: 0 22px 46px rgba(38,91,86,.2);
+  }
+  .wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors a:hover .xk-portal-face {
+    transform: none;
+    box-shadow: 0 5px 18px rgba(38,91,86,.15);
+  }
+}
+.xk-radiant-2026 :is(a, button, summary):focus-visible {
+  outline: 3px solid #1f6865;
+  outline-offset: 4px;
+}
+.wox-home.xk-gateway.xk-radiant-2026 .wox-art-credit {
+  right: clamp(20px, 5vw, 60px);
+  bottom: 22px;
+  max-width: calc(100% - 40px);
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.79);
+  color: #325961;
+  text-shadow: none;
+  font-size: 10px;
+}
+.xk-radiant-2026 .wox-utility-rail {
+  background: #f3f9f7;
+  border-bottom-color: var(--xk-line);
+}
+.xk-radiant-2026 .wox-utility-rail :is(a,button) { color: #285e59; }
+.xk-radiant-2026 .wox-content { color: var(--xk-deep); }
+.xk-radiant-2026 .xk-veyr-story { border-bottom: 1px solid var(--xk-line); }
+.xk-radiant-2026 .xk-veyr-copy > p:first-child,
+.xk-radiant-2026 .xk-studio-copy > p:first-child { color: #457d70; }
+.xk-radiant-2026 .xk-veyr-copy :is(h2,h3) { color: #1c4245; }
+.xk-radiant-2026 .xk-veyr-copy h2 span { color: #6f5c90; }
+.xk-radiant-2026 .xk-veyr-copy > p:not(:first-child),
+.xk-radiant-2026 .xk-veyr-copy ul { color: #3d5b61; }
+.xk-radiant-2026 .xk-veyr-copy details { border-color: var(--xk-line); }
+.xk-radiant-2026 .xk-veyr-copy summary { color: #285a59; }
+.xk-radiant-2026 .xk-veyr-visual {
+  border-radius: 24px;
+  clip-path: none;
+  border-color: rgba(105,166,148,.38);
+  background: radial-gradient(ellipse at 76% 20%, rgba(189,177,235,.42), transparent 49%),
+    linear-gradient(130deg, #d8efe4, #eef8f6);
+}
+.xk-radiant-2026 .xk-veyr-visual small { color: #527269; }
+.xk-radiant-2026 .xk-veyr-visual strong { color: #255455; }
+.xk-radiant-2026 .xk-veyr-visual span { color: #3b6462; }
+.xk-radiant-2026 .xk-veyr-visual i { color: rgba(107,132,175,.12); }
+.xk-radiant-2026 .xk-studio-story {
+  border-color: rgba(121,172,146,.43);
+  border-radius: 24px;
+  background: linear-gradient(110deg, #e5f5ed, #fdf9ec 85%);
+}
+.xk-radiant-2026 .xk-studio-copy h2 { color: #284749; }
+.xk-radiant-2026 .xk-studio-copy > span { color: #3c5b62; }
+.xk-radiant-2026 .xk-studio-copy > a { background: #287969; color: #fff; border-radius: 12px; }
+.xk-radiant-2026 .xk-studio-aside { border-color: rgba(72,133,116,.28); }
+.xk-radiant-2026 .xk-studio-aside > span { color: #3b7e6d; }
+.xk-radiant-2026 .xk-studio-aside strong { color: #315c55; }
+.xk-radiant-2026 .xk-studio-aside small { color: #526967; }
+.xk-radiant-2026 .wox-ecosystem-head :is(p,h2,span) { color: #24494f; }
+.xk-radiant-2026 .wox-ecosystem-grid { border-color: var(--xk-line); }
+.xk-radiant-2026 .wox-ecosystem-card,
+.xk-radiant-2026 .wox-ecosystem-card:first-child {
+  border-color: var(--xk-line);
+  background: rgba(255,255,255,.69);
+}
+.xk-radiant-2026 .wox-ecosystem-card :is(h3,p,small,span,strong) { color: #275058; }
+.xk-radiant-2026 .xk-network-links { border-color: var(--xk-line); }
+.xk-radiant-2026 .xk-network-links > span,
+.xk-radiant-2026 .xk-network-links a :is(strong,small,b) { color: #315c59; }
+.xk-radiant-2026 .xk-network-links a { border-color: var(--xk-line); color: #27464b; }
+.xk-radiant-2026 .wox-footer-premium { background: #e2f0ea; color: #24494b; border-top-color: var(--xk-line); }
+.xk-radiant-2026 .wox-footer-premium :is(h2, strong, p, small, a, span) { color: #24494b; }
+.xk-radiant-2026 .wox-footer-bottom { border-top-color: var(--xk-line); }
+@media (max-width: 1120px) {
+  .wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > a { min-height: 180px; }
+}
+@media (max-width: 680px) {
+  .wox-home.xk-gateway.xk-radiant-2026 .wox-hero {
+    min-height: auto;
+    padding: 95px 18px 85px;
+  }
+  .wox-home.xk-gateway.xk-radiant-2026 .wox-hero-core {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+  .wox-home.xk-gateway.xk-radiant-2026 .wox-hero h1 { font-size: clamp(39px, 10.7vw, 62px); }
+  .wox-home.xk-gateway.xk-radiant-2026 .wox-hero h1 span { font-size: 15px; }
+  .wox-home.xk-gateway.xk-radiant-2026 .wox-lead { font-size: 15px; }
+  .wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors { grid-template-columns: 1fr; gap: 12px; margin-top: 36px; }
+  .wox-home.xk-gateway.xk-radiant-2026 .xk-hero-doors > a {
+    min-height: 128px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 17px;
+  }
+  .wox-home.xk-gateway.xk-radiant-2026 .xk-portal-face {
+    flex-basis: 49px;
+    width: 49px;
+    height: 49px;
+  }
+  .wox-home.xk-gateway.xk-radiant-2026 .wox-art-credit {
+    left: 18px; right: 18px; width: auto; bottom: 24px;
+    text-align: center;
+  }
+  .xk-radiant-2026 .wox-content { width: calc(100% - 36px); }
+  .xk-radiant-2026 .xk-veyr-story { padding-block: 60px; }
+  .xk-radiant-2026 .xk-studio-story { padding: 32px 23px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xk-radiant-2026 *,
+  .xk-radiant-2026 *::before,
+  .xk-radiant-2026 *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  .xk-radiant-2026 .xk-hero-doors > a:hover { transform: none !important; }
+}
+
+/* The actual FantasyNavigation component uses its own dark defaults.
+ * Override only this homepage so links remain readable on daylight artwork. */
+.xk-radiant-2026 .xkf-header {
+  background: rgba(255,255,250,.91);
+  color: #1a4445;
+  border-bottom: 1px solid rgba(43,109,99,.25);
+  border-radius: 0 0 18px 18px;
+  padding-inline: 17px;
+  box-shadow: 0 5px 25px rgba(49,96,87,.09);
+  backdrop-filter: blur(18px);
+}
+.xk-radiant-2026 .xkf-brand { color: #254953 !important; }
+.xk-radiant-2026 .xkf-brand > span { color: #8861ab; }
+.xk-radiant-2026 .xkf-desktop a,
+.xk-radiant-2026 .xkf-mobile-panel a,
+.xk-radiant-2026 .xkf-actions a,
+.xk-radiant-2026 .xkf-actions button,
+.xk-radiant-2026 .xkf-mobile { color: #264e53; }
+.xk-radiant-2026 .xkf-header .xkf-game-link { color: #5e4b85; }
+.xk-radiant-2026 .xkf-header .xkf-support-link {
+  color: #24594e;
+  border-color: rgba(54,134,106,.38);
+  background: rgba(206,241,221,.55);
+}
+.xk-radiant-2026 .xkf-actions button,
+.xk-radiant-2026 .xkf-actions a { border-color: rgba(55,111,104,.28); }
+.xk-radiant-2026 .xkf-desktop a[aria-current] { color: #245f56; }
+.xk-radiant-2026 .xkf-mobile-panel {
+  background: rgba(255,255,250,.98);
+  border-color: rgba(43,109,99,.25);
+  border-radius: 14px;
+}
+.xk-radiant-2026 .xkf-mobile-panel a { border-color: rgba(43,109,99,.17); }
+@media (hover:hover) and (pointer:fine) {
+  .xk-radiant-2026 .xkf-header a:hover,
+  .xk-radiant-2026 .xkf-actions button:hover,
+  .xk-radiant-2026 .xkf-mobile:hover { color: #167664; }
+}
+@media (max-width: 680px) {
+  .xk-radiant-2026 .xkf-header {
+    width: calc(100% - 26px);
+    padding: 9px 11px;
+    gap: 7px;
+  }
+  .xk-radiant-2026 .xkf-mobile { color: #265b51; }
+}
+
+/* The original cinematic shell switches to block at tablet sizes.
+ * Preserve that behaviour: retaining flex squeezed the portal grid beside art credits. */
+@media (max-width: 1100px) {
+  .wox-home.xk-gateway.xk-radiant-2026 .wox-hero { display: block; }
+  .wox-home.xk-gateway.xk-radiant-2026 .wox-hero-core {
+    width: 100%;
+    max-width: 840px;
+    margin-inline: auto;
+  }
+  .wox-home.xk-gateway.xk-radiant-2026 .wox-art-credit {
+    position: static;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 22px;
+    text-align: left;
+  }
+}
