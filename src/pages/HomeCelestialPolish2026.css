@@ -1,0 +1,138 @@
+/* XETHKIOZ October 2026 — final light-home polish and single celestial Green Node access.
+ * Scoped to public Home only. Game selector and archive retain their individual themes.
+ * Original SVG artwork, no remote dependency. */
+.xk-launcher-home .xk-light-world--node {
+  --xk-glow: rgba(121,235,200,.82);
+  color: #145c51!important;
+  background-image:
+    linear-gradient(180deg,rgba(249,255,254,.12) 0%,rgba(237,255,249,.36) 34%,rgba(236,253,246,.91) 68%,#f0fff8 100%),
+    url('/assets/green-node-celestial-2026.svg');
+  border-color: rgba(162,230,206,.94);
+  box-shadow: 0 22px 48px rgba(29,117,105,.16),inset 0 1px rgba(255,255,255,.92);
+}
+.xk-launcher-home .xk-light-world--node .xk-light-world__scenery img {
+  object-position: 71% 50%;
+  filter: saturate(1.08) brightness(1.02);
+}
+.xk-launcher-home .xk-light-world--node::before {
+  background:linear-gradient(180deg,rgba(238,255,252,0) 0%,rgba(241,255,252,.10) 26%,rgba(241,255,250,.79) 57%,rgba(245,255,250,.99) 92%);
+}
+.xk-launcher-home .xk-light-world--node .xk-light-world__symbol {
+  border-color: rgba(182,255,229,.9);
+  background:linear-gradient(140deg,#43bda1,#1f7f79);
+  color:#f0fffb;
+  text-shadow:0 0 15px rgba(230,255,248,.85);
+  box-shadow:0 8px 24px rgba(32,139,121,.25);
+}
+.xk-launcher-home .xk-light-world--node :is(small,strong) {color:#125e52}
+.xk-launcher-home .xk-light-world--node strong {
+  font-family: Georgia,serif;
+  font-size:clamp(22px,2.1vw,29px);
+  letter-spacing:.06em;
+}
+.xk-launcher-home .xk-light-world--node b {color:#076f62}
+.xk-launcher-home .xk-light-intro {
+  isolation:isolate;
+}
+.xk-launcher-home .xk-light-intro h2 {
+  text-shadow:0 2px 22px rgba(255,255,255,.5);
+}
+.xk-launcher-home .xk-light-world:focus-visible {
+  outline:3px solid #08796d;
+  outline-offset:4px;
+}
+/* Secondary routes remain visible, but now match the daylight theme. */
+.xk-launcher-home .xk-launcher-mini {
+  background:linear-gradient(145deg,rgba(255,255,255,.92),rgba(231,248,240,.78));
+  border:1px solid rgba(54,136,115,.23);
+  box-shadow:0 12px 28px rgba(38,91,91,.07);
+  color:#1e5356!important;
+}
+.xk-launcher-home .xk-launcher-mini:hover {
+  background:rgba(252,255,251,.98);
+  border-color:rgba(40,131,107,.52);
+  box-shadow:0 17px 35px rgba(29,98,79,.13);
+}
+.xk-launcher-home .xk-launcher-mini__icon {
+  background:rgba(231,248,239,.85);
+  border-color:rgba(57,124,115,.23);
+}
+.xk-launcher-home .xk-launcher-mini__copy small {color:#456e68}
+.xk-launcher-home .xk-launcher-mini__copy b {color:#174c55}
+.xk-launcher-home .xk-launcher-mini__copy i {color:#4c6c67}
+.xk-launcher-home .xk-launcher-mini__arrow {color:#267968}
+.xk-launcher-home .xk-launcher-hero__actions :is(.xk-launcher-primary,.xk-launcher-secondary) {
+  color:#174d54!important;
+  background:rgba(255,255,255,.84);
+  border-color:rgba(46,128,112,.32);
+  box-shadow:0 5px 17px rgba(26,89,88,.07);
+}
+.xk-launcher-home .xk-launcher-hero__actions .xk-launcher-primary {
+  color:#fff!important;
+  border-color:#287f71;
+  background:#287f71;
+}
+.xk-launcher-home .xk-launcher-hero__actions .xk-launcher-primary b{color:#fff}
+.xk-launcher-home .xk-launcher-hero__actions .xk-launcher-primary:hover {
+  background:#18665d;box-shadow:0 10px 23px rgba(26,108,84,.2);
+}
+.xk-launcher-home .xk-launcher-hero__actions .xk-launcher-secondary:hover {
+  background:#eaf9f5;box-shadow:0 9px 22px rgba(26,108,84,.13);
+}
+.xk-launcher-home .xk-launcher-hero__foot span:last-child {color:#416b66}
+.xk-launcher-home .xk-universe-tabs button:focus-visible,
+.xk-launcher-home .xk-universe-archive-toggle__button:focus-visible {
+  outline:3px solid #1a8470;outline-offset:4px;
+}
+/* A footer which belongs to the same visual identity and has readable controls. */
+.xk-launcher-home .portal-footer {
+  max-width:1180px;
+  margin:32px auto 24px;
+  padding:28px clamp(15px,3vw,35px) 18px;
+  border:1px solid rgba(69,139,119,.2);
+  border-radius:22px;
+  background:linear-gradient(150deg,rgba(251,255,250,.88),rgba(231,248,244,.83));
+  color:#285950;
+  box-shadow:0 15px 42px rgba(26,99,87,.09);
+}
+.xk-launcher-home .portal-donations h2 {color:#25565b}
+.xk-launcher-home .portal-donations__buttons a {
+  border-color:rgba(65,130,147,.3);
+  background:linear-gradient(145deg,#ffffff,#e8f7f7);
+  color:#265a70;
+  box-shadow:0 6px 15px rgba(34,107,120,.09);
+}
+.xk-launcher-home .portal-donations__note,
+.xk-launcher-home .portal-donations__note button {color:#366b61}
+.xk-launcher-home .portal-donations__note a {color:#146c73}
+.xk-launcher-home .portal-socials a {color:#2a6865}
+.xk-launcher-home .portal-socials a:hover{color:#115f59}
+.xk-launcher-home .portal-socials :is(small,span){color:inherit}
+.xk-launcher-home .portal-footer__rights {
+  border-color:rgba(53,126,110,.19);
+  color:#466b61;
+}
+.xk-launcher-home .portal-footer__rights :is(a,button){color:#2b6868}
+.xk-launcher-home .portal-footer :is(a,button):focus-visible {
+  outline:3px solid #10756a;outline-offset:3px;
+}
+@media(max-width:760px) {
+  .xk-launcher-home .portal-footer {
+    width:calc(100% - 24px);
+    margin:22px auto;
+    padding:22px 12px 16px;
+    border-radius:17px;
+  }
+  .xk-launcher-home .xk-light-world--node strong{font-size:clamp(24px,7vw,30px)}
+  .xk-launcher-home .portal-donations__buttons{flex-wrap:wrap}
+}
+@media(max-width:360px) {
+  .xk-launcher-home .xk-launcher-hero__actions :is(.xk-launcher-primary,.xk-launcher-secondary) {width:100%}
+}
+@media(prefers-reduced-motion:reduce) {
+  .xk-launcher-home .xk-light-world,
+  .xk-launcher-home .xk-launcher-mini,
+  .xk-launcher-home .xk-launcher-hero__actions :is(.xk-launcher-primary,.xk-launcher-secondary) {
+    animation:none!important;transition:none!important;
+  }
+}

@@ -14,6 +14,7 @@ import { useLang } from '../lib/LangContext'
 import { getCuratedExternalNews } from '../services/news/curatedExternalNews'
 import { fetchPublishedNews, formatPublicNewsDate, type PublicNewsArticle, type PublicNewsCategory } from '../services/news/publicNewsService'
 import './GreenNodeDossiers.css'
+import './GreenNodeLuminous.css'
 
 type NodeBlock = {
   id: string
@@ -582,16 +583,12 @@ export default function GreenNode() {
               <div id="green-view-content" className={`xk-green-view is-${activeView}`} tabIndex={-1}>
 
               {activeView === 'overview' ? <>
-              <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4" role="tablist" aria-label={t.nodeSelector}>
+              <div className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4" role="group" aria-label={t.nodeSelector}>
                 {t.blocks.map((node, index) => (
                   <button
                     key={node.id}
                     id={`green-tab-${node.id}`}
                     type="button"
-                    role="tab"
-                    aria-selected={active.id === node.id}
-                    aria-controls="signal-archive"
-                    tabIndex={active.id === node.id ? 0 : -1}
                     onClick={() => openNode(node.id)}
                     onKeyDown={(event) => {
                       if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); moveNodeFocus(index, 1) }
@@ -670,11 +667,11 @@ export default function GreenNode() {
               </> : null}
 
               {activeView === 'signals' ? <>
-              <section id="signal-archive" className="mt-6 scroll-mt-28 overflow-hidden rounded-2xl border border-[#32FF8A]/35 bg-[radial-gradient(circle_at_90%_10%,rgba(50,255,138,.13),transparent_32%),rgba(3,16,6,.88)] p-5 font-mono md:p-7" role="tabpanel" aria-labelledby={`green-tab-${active.id}`} aria-live="polite">
+              <section id="signal-archive" className="mt-6 scroll-mt-28 overflow-hidden rounded-2xl border border-[#32FF8A]/35 bg-[radial-gradient(circle_at_90%_10%,rgba(50,255,138,.13),transparent_32%),rgba(3,16,6,.88)] p-5 font-mono md:p-7" aria-labelledby="signal-archive-title" aria-live="polite">
                 <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
                   <div>
                     <p className="text-[9px] font-black uppercase tracking-[0.28em] text-[#32FF8A]/60">{t.active} // {active.signal}</p>
-                    <h2 className="mt-3 text-2xl font-black uppercase tracking-[0.08em] text-[#D8FFE8] md:text-3xl">{active.title}</h2>
+                    <h2 id="signal-archive-title" className="mt-3 text-2xl font-black uppercase tracking-[0.08em] text-[#D8FFE8] md:text-3xl">{active.title}</h2>
                     <p className="mt-3 max-w-3xl text-sm leading-7 text-[#B9FFD1]/75">{active.text}</p>
                   </div>
                   <Link to={`/news?category=${active.category}`} className="shrink-0 rounded-full border border-[#32FF8A]/45 px-5 py-3 text-[10px] font-black uppercase tracking-[0.16em] text-[#D8FFE8] transition hover:bg-[#32FF8A]/10">{t.explore} →</Link>

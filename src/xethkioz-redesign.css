@@ -136,7 +136,8 @@ body {
   transition: transform .16s ease;
 }
 
-.xk-skip-link:focus { transform: translateY(0); }
+.xk-skip-link:focus-visible { transform: translateY(0); }
+.xk-skip-link:focus:not(:focus-visible) { transform: translateY(-180%); }
 
 .xk-mobile-dock { display: none; }
 

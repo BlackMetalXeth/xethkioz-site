@@ -5,6 +5,7 @@ import { useLang } from '../lib/LangContext'
 import PortalNavigation from '../components/portals/PortalNavigation'
 import PortalEffects from '../components/portals/PortalEffects'
 import './PortalInteriors.css'
+import './PortalLuminous.css'
 
 // Public presentation only. The game repository and internal documents stay private.
 export default function ElementalRealms() {
@@ -26,7 +27,7 @@ export default function ElementalRealms() {
     <SEO title="World of Xethkioz: Elemental Realms" description={es ? 'Un Action RPG 3D single player independiente en desarrollo. Mirá la Demo Alpha 2 y conocé a Veyr y B-Rabbit.' : 'An independent single-player 3D action RPG in development. Watch the Alpha 2 Demo and meet Veyr and B-Rabbit.'} url="/world-of-xethkioz/elemental-realms" image="/assets/world-of-xethkioz/media/elemental-realms-alpha-2-poster.webp"/>
     <PortalNavigation/>
     <section className="portal-game__hero portal-content" aria-labelledby="game-title">
-      <div className="portal-game__intro"><p className="portal-eyebrow">WORLD OF XETHKIOZ</p><h1 id="game-title">Elemental<br/>Realms<span aria-hidden="true">.</span></h1><p>{es ? 'Explorá. Descubrí. Dejá tu huella.' : 'Explore. Discover. Leave your mark.'}</p><div className="portal-game__tags"><span>ACTION RPG 3D</span><span>SINGLE PLAYER</span><span>{es ? 'EN DESARROLLO' : 'IN DEVELOPMENT'}</span></div><a className="portal-game__follow" href="https://www.threads.com/@xethkioz" target="_blank" rel="noopener noreferrer">{es ? 'Seguí los avances' : 'Follow development'} ↗</a><PortalEffects tone="fire" count={7}/></div>
+      <div className="portal-game__intro"><p className="portal-eyebrow">WORLD OF XETHKIOZ</p><h1 id="game-title">Elemental<br/>{' '}Realms<span aria-hidden="true">.</span></h1><p>{es ? 'Explorá. Descubrí. Dejá tu huella.' : 'Explore. Discover. Leave your mark.'}</p><div className="portal-game__tags"><span>ACTION RPG 3D</span><span>SINGLE PLAYER</span><span>{es ? 'EN DESARROLLO' : 'IN DEVELOPMENT'}</span></div><a className="portal-game__follow" href="https://www.threads.com/@xethkioz" target="_blank" rel="noopener noreferrer">{es ? 'Seguí los avances' : 'Follow development'} ↗</a><PortalEffects tone="fire" count={7}/></div>
       <figure id="alpha-2" className="portal-game__demo">
         <div className="portal-game__demo-heading"><span>DEMO ALPHA 2</span><span>{es ? 'CAPTURA DE DESARROLLO' : 'DEVELOPMENT CAPTURE'}</span></div>
         <video className="woxp-alpha2-video" controls playsInline preload="metadata" poster="/assets/world-of-xethkioz/media/elemental-realms-alpha-2-poster.webp" aria-label={es ? 'Demo Alpha 2 de Elemental Realms' : 'Elemental Realms Alpha 2 Demo'}><source src="/assets/world-of-xethkioz/media/elemental-realms-alpha-2.mp4" type="video/mp4"/>{es ? 'Tu navegador no permite reproducir este video.' : 'Your browser cannot play this video.'}</video>
